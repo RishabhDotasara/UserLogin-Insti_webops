@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
@@ -24,13 +25,13 @@ export default function Signup() {
     }
     else {
 
-        const userToAdd = { username: username, password: encryptedPassword };
+        const userToAdd = { username: username, password: encryptedPassword, email:email };
         const updatedUsers = [...usersData, userToAdd];
     
         setUsers(updatedUsers);
         localStorage.setItem('data', JSON.stringify(updatedUsers));
     
-        navigate('/');
+        navigate('/UserLogin-Insti_webops');
     }
   }
 
@@ -44,9 +45,10 @@ export default function Signup() {
       <div className="inputs">
         <input type="text" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} />
         <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
         <button className='btn' onClick={registerUser}>Signup</button>
       </div>
-      <Link to="/" style={{ textDecoration: 'none' }}>Login?</Link>
+      <Link to="/UserLogin-Insti_webops" style={{ textDecoration: 'none' }}>Login?</Link>
     </div>
   )
 }

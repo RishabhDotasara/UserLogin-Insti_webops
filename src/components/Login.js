@@ -4,7 +4,7 @@ import CryptoJS from "crypto-js";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ export default function Login() {
     const userData = JSON.parse(storedData);
     const secretKey = "webops";
   
-    console.log("Username:", username);
+    console.log("Username:", email);
     console.log("Password:", password);
     console.log("UserData:", userData);
   
@@ -25,15 +25,15 @@ export default function Login() {
         ).toString(CryptoJS.enc.Utf8);
         console.log("Decrypted Password:", decryptedPassword);
         console.log("Password:", password);
-        if (user.username === username && decryptedPassword === password) {
-          navigate("/success");
+        if (user.email === email && decryptedPassword === password) {
+          navigate("/UserLogin-Insti_webops/success");
           return; // Exit the loop and function once user is found
         }
       }
-      alert("Invalid username or password");
+      alert("Invalid Email or password");
     } else {
       alert("Users not found. Please register a user!");
-      navigate("/signup");
+      navigate("/UserLogin-Insti_webops/signup");
     }
   };
   
@@ -44,9 +44,9 @@ export default function Login() {
       <div className="inputs">
         <input
           type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
@@ -58,7 +58,7 @@ export default function Login() {
           Login
         </button>
       </div>
-      <Link to="/signup" style={{ textDecoration: "none" }}>
+      <Link to="/UserLogin-Insti_webops/signup" style={{ textDecoration: "none" }}>
         Signup?
       </Link>
     </div>

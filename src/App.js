@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -13,9 +13,9 @@ function App() {
     <BrowserRouter>
     <div className='container'>
         <Routes>
-          <Route index element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/success" element={<Success/>}/>
+          <Route path="/UserLogin-Insti_webops" element={<Login/>}/>
+          <Route path="/UserLogin-Insti_webops/signup" element={<Signup/>}/>
+          <Route path="/UserLogin-Insti_webops/success" element={<Success/>}/>
         </Routes>
     </div>
     </BrowserRouter>
